@@ -1,6 +1,6 @@
 <?php
 
-namespace OptimistDigital\MenuBuilder\Classes;
+namespace WelcomeDigital\MenuBuilder\Classes;
 
 abstract class MenuLinkable
 {

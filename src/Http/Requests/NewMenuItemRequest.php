@@ -1,9 +1,9 @@
 <?php
 
-namespace OptimistDigital\MenuBuilder\Http\Requests;
+namespace WelcomeDigital\MenuBuilder\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use OptimistDigital\MenuBuilder\MenuBuilder;
+use WelcomeDigital\MenuBuilder\MenuBuilder;
 
 class NewMenuItemRequest extends FormRequest
 {

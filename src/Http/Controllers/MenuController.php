@@ -1,13 +1,13 @@
 <?php
 
-namespace OptimistDigital\MenuBuilder\Http\Controllers;
+namespace WelcomeDigital\MenuBuilder\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use OptimistDigital\MenuBuilder\Models\Menu;
-use OptimistDigital\MenuBuilder\Models\MenuItem;
-use OptimistDigital\MenuBuilder\Http\Requests\NewMenuItemRequest;
-use OptimistDigital\MenuBuilder\MenuBuilder;
+use WelcomeDigital\MenuBuilder\Models\Menu;
+use WelcomeDigital\MenuBuilder\Models\MenuItem;
+use WelcomeDigital\MenuBuilder\Http\Requests\NewMenuItemRequest;
+use WelcomeDigital\MenuBuilder\MenuBuilder;
 
 class MenuController extends Controller
 {
@@ -84,7 +84,7 @@ class MenuController extends Controller
     /**
      * Update the given menu item
      *
-     * @param   \OptimistDigital\MenuBuilder\Models\MenuItem  $item
+     * @param   \WelcomeDigital\MenuBuilder\Models\MenuItem  $item
      * @param   NewMenuItemRequest  $request
      *
      * @return  json

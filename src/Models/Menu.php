@@ -1,9 +1,9 @@
 <?php
 
-namespace OptimistDigital\MenuBuilder\Models;
+namespace WelcomeDigital\MenuBuilder\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use OptimistDigital\MenuBuilder\Models\MenuItem;
+use WelcomeDigital\MenuBuilder\Models\MenuItem;
 
 class Menu extends Model
 {

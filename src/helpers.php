@@ -1,6 +1,6 @@
 <?php
 
-use OptimistDigital\MenuBuilder\Models\Menu;
+use WelcomeDigital\MenuBuilder\Models\Menu;
 
 if (!function_exists('nova_get_menus')) {
     function nova_get_menus()

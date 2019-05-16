@@ -1,6 +1,6 @@
 <?php
 
-namespace OptimistDigital\MenuBuilder;
+namespace WelcomeDigital\MenuBuilder;
 
 use Laravel\Nova\ResourceTool;
 

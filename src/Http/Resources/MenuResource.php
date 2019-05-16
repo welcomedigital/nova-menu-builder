@@ -1,15 +1,15 @@
 <?php
 
-namespace OptimistDigital\MenuBuilder\Http\Resources;
+namespace WelcomeDigital\MenuBuilder\Http\Resources;
 
 use Illuminate\Http\Request;
-use OptimistDigital\MenuBuilder\BuilderResourceTool;
-use OptimistDigital\MenuBuilder\Models\Menu;
+use WelcomeDigital\MenuBuilder\BuilderResourceTool;
+use WelcomeDigital\MenuBuilder\Models\Menu;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Resource;
-use OptimistDigital\MenuBuilder\MenuBuilder;
+use WelcomeDigital\MenuBuilder\MenuBuilder;
 
 class MenuResource extends Resource
 {
