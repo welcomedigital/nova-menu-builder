@@ -1,32 +1,21 @@
 {
-  "name": "optimistdigital/nova-menu-builder",
+  "name": "wdgt/nova-menu-builder",
   "description": "Menu Builder Tool for Laravel Nova.",
   "keywords": [
     "laravel",
     "nova",
     "menu",
     "builder",
-    "optimistdigital"
+    "Wdgt"
   ],
   "license": "MIT",
-  "authors": [
-    {
-      "name": "Tarvo Reinpalu",
-      "email": "tarvoreinpalu@gmail.com",
-      "role": "Developer"
-    },
-    {
-      "name": "Optimist Digital",
-      "email": "info@optimistdigital.com",
-      "role": "Maintainer"
-    }
-  ],
+  "authors": [],
   "require": {
     "php": ">=7.1.0"
   },
   "autoload": {
     "psr-4": {
-      "OptimistDigital\\MenuBuilder\\": "src/"
+      "Wdgt\\MenuBuilder\\": "src/"
     },
     "files": [
       "src/helpers.php"
@@ -35,7 +24,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "OptimistDigital\\MenuBuilder\\MenuBuilderServiceProvider"
+        "Wdgt\\MenuBuilder\\MenuBuilderServiceProvider"
       ]
     }
   },
