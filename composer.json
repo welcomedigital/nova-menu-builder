@@ -1,12 +1,12 @@
 {
-  "name": "welcomedigital/nova-menu-builder",
+  "name": "wdgt/nova-menu-builder",
   "description": "Menu Builder Tool for Laravel Nova.",
   "keywords": [
     "laravel",
     "nova",
     "menu",
     "builder",
-    "welcomedigital"
+    "Wdgt"
   ],
   "license": "MIT",
   "authors": [],
@@ -15,7 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "WelcomeDigital\\MenuBuilder\\": "src/"
+      "Wdgt\\MenuBuilder\\": "src/"
     },
     "files": [
       "src/helpers.php"
@@ -24,7 +24,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "WelcomeDigital\\MenuBuilder\\MenuBuilderServiceProvider"
+        "Wdgt\\MenuBuilder\\MenuBuilderServiceProvider"
       ]
     }
   },

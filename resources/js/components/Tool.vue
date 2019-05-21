@@ -1,6 +1,6 @@
-<template>
-  <resource-index :resourceName="'nova-menu'"></resource-index>
-</template>
 
-<script></script>
-<style></style>
+<template>
+  <div>
+    <resource-index :resourceName="'nova-menu'"></resource-index>
+  </div>
+</template>

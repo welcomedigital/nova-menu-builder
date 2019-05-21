@@ -1,15 +1,19 @@
 <?php
 
-namespace WelcomeDigital\MenuBuilder\Http\Resources;
+namespace Wdgt\MenuBuilder\Http\Resources;
 
 use Illuminate\Http\Request;
-use WelcomeDigital\MenuBuilder\BuilderResourceTool;
-use WelcomeDigital\MenuBuilder\Models\Menu;
+use Wdgt\MenuBuilder\BuilderResourceTool;
+use Wdgt\MenuBuilder\Models\Menu;
+use Wdgt\MenuBuilder\MenuBuilder;
+
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Resource;
-use WelcomeDigital\MenuBuilder\MenuBuilder;
+use Laravel\Nova\Fields\BelongsTo;
+
+use Digitalcloud\MultilingualNova\Multilingual;
 
 class MenuResource extends Resource
 {
@@ -33,7 +37,7 @@ class MenuResource extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id','name','slug'
     ];
 
     /**
@@ -50,19 +54,17 @@ class MenuResource extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
+
+            ID::make()->sortable()->hideFromIndex(),
 
             Text::make(__('Name'), 'name')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('required', 'max:255')
+                ->sortable(),
 
-            Text::make(__('Slug'), 'slug')
-                ->sortable()
-                ->rules('required', 'max:255', 'unique:menus,slug,{{resourceId}},id,locale,' . $request->locale),
-
-            Select::make(__('Locale'), 'locale')
-                ->options(MenuBuilder::getLocales())
-                ->displayUsingLabels(),
+            Text::make(__('Slug'), 'slug')->onlyOnIndex(),
+            
+            BelongsTo::make(__('Locale'), 'Language', \App\Nova\Language::class)->sortable(),
 
             BuilderResourceTool::make(),
         ];

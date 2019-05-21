@@ -1,11 +1,11 @@
 <?php
 
-namespace WelcomeDigital\MenuBuilder;
+namespace Wdgt\MenuBuilder;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use WelcomeDigital\MenuBuilder\Http\Middleware\Authorize;
-use WelcomeDigital\MenuBuilder\Http\Resources\MenuResource;
+use Wdgt\MenuBuilder\Http\Middleware\Authorize;
+use Wdgt\MenuBuilder\Http\Resources\MenuResource;
 use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
 
@@ -47,7 +47,7 @@ class MenuBuilderServiceProvider extends ServiceProvider
         }
 
         Route::middleware(['nova', Authorize::class])
-            ->namespace('WelcomeDigital\MenuBuilder\Http\Controllers')
+            ->namespace('Wdgt\MenuBuilder\Http\Controllers')
             ->prefix('nova-vendor/nova-menu')
             ->group(__DIR__ . '/../routes/api.php');
     }

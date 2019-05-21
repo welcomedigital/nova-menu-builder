@@ -23,7 +23,9 @@
               <span class="font-semibold">{{ item.name }}</span>
               <span class="font-lighter text-80 ml-4 text-sm">{{ item.displayValue }}</span>
             </div>
+
             <div class="buttons w-1/3 flex justify-end content-center">
+
               <button
                 @click="editMenu(item)"
                 title="Edit"
@@ -159,12 +161,15 @@
                 <select v-model="linkType" id="type" class="w-full form-control form-select">
                   <option value="" selected="selected" disabled="disabled">
                     {{ __('Choose an option') }}
-                  </option>
+                  </option> 
 
                   <option :value="linkType" v-for="(linkType, i) of linkTypes" :key="i">{{ linkType.name }}</option>
                 </select>
               </div>
             </div>
+
+
+            <!-- Static Page -->
             <template v-if="linkType.type == 'static-url'">
               <div class="flex border-b border-40">
                 <div class="w-1/5 py-4">
@@ -182,18 +187,36 @@
                   />
                 </div>
               </div>
-            </template>
 
+              <div class="flex border-b border-40">
+                <div class="w-1/5 py-4">
+                  <label class="inline-block text-80 pt-2 leading-tight">
+                    {{ __('Open in') }}
+                  </label>
+                </div>
+                <div class="py-4 w-4/5">
+                  <select v-model="newItem.target" id="type" class="w-full form-control form-select">
+                    <option value="_self"> {{ __('Same window') }} </option>
+                    <option value="_blank"> {{ __('New window') }} </option>
+                  </select>
+                </div>
+              </div>
+            </template>
+            
+
+            
+            <!-- Model selector -->
             <template v-if="linkType.type == 'select'">
               <div class="flex border-b border-40">
                 <div class="w-1/5 py-4">
                   <label class="inline-block text-80 pt-2 leading-tight">
-                    {{ __('Model') }}
+                    
                   </label>
                 </div>
 
                 <div class="py-4 w-4/5">
                   <select v-model="newItem.value" id="type" class="w-full form-control form-select">
+
                     <option value="" selected="selected" disabled="disabled">
                       {{ __('Choose an option') }}
                     </option>
@@ -201,39 +224,40 @@
                     <option :value="key" v-for="(key, i) of Object.keys(linkType.options)" :key="i">
                       {{ linkType.options[key] }}
                     </option>
+
                   </select>
                 </div>
-              </div>
-              <div class="flex border-b border-40">
-                <div class="w-1/5 py-4">
-                  <label class="inline-block text-80 pt-2 leading-tight">
-                    {{ __('Parameters') }}
-                  </label>
-                </div>
-                <div class="py-4 w-4/5">
-                  <codemirror
-                    v-model="newItem.parameters"
-                    :options="cmOptions"
-                    :placeholder="cmPlaceholder"
-                  ></codemirror>
-                </div>
+
               </div>
             </template>
 
-            <div class="flex border-b border-40" v-if="linkType.type">
-              <div class="w-1/5 py-4">
-                <label class="inline-block text-80 pt-2 leading-tight">
-                  {{ __('Open in') }}
-                </label>
+            <template v-if="linkType.type">
+
+              <label class="inline-block text-80 pt-2 leading-tight">
+                <checkbox-with-label @change="showExtra = !showExtra" :checked="showExtra == true" class="m-2">{{ __("Extra parameters")}}</checkbox-with-label>
+              </label>
+
+              <div v-if="showExtra">
+                <div class="flex border-b border-40">
+                  <div class="w-1/5 py-4">
+                    <label class="inline-block text-80 pt-2 leading-tight">
+                      {{ __('Parameters') }}
+                    </label>
+                  </div>
+                  <div class="py-4 w-4/5">
+                    <codemirror
+                      v-model="newItem.parameters"
+                      :options="cmOptions"
+                      :placeholder="cmPlaceholder"
+                    ></codemirror>
+                  </div>
+                </div>
               </div>
-              <div class="py-4 w-4/5">
-                <select v-model="newItem.target" id="type" class="w-full form-control form-select">
-                  <option value="_self"> {{ __('Same window') }} </option>
-                  <option value="_blank"> {{ __('New window') }} </option>
-                </select>
-              </div>
-            </div>
+              
+            </template>
+
           </form>
+
         </div>
         <div slot="buttons">
           <div class="ml-auto">
@@ -322,6 +346,7 @@ export default {
     linkTypes: void 0,
     toogleLabels: false,
     switchColor: {},
+    showExtra: false,
   }),
   computed: {
     newItemData() {

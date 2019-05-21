@@ -1,6 +1,6 @@
 <?php
 
-namespace WelcomeDigital\MenuBuilder;
+namespace Wdgt\MenuBuilder;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
@@ -8,20 +8,14 @@ use Laravel\Nova\Tool;
 class MenuBuilder extends Tool
 {
     protected static $linkableModels = [
-        \WelcomeDigital\MenuBuilder\Classes\MenuItemStaticURL::class
-    ];
-
-    protected static $locales = [
-        'en_US' => 'English'
+        \Wdgt\MenuBuilder\Classes\MenuItemStaticURL::class,
+        \Wdgt\MenuBuilder\Classes\MenuItemLanguage::class,
     ];
 
     public function __construct(array $data = null)
     {
         if (empty($data)) return;
 
-        if (isset($data['locales']) && is_array($data['locales'])) {
-            self::$locales = $data['locales'];
-        }
 
         if (isset($data['linkable_models']) && is_array($data['linkable_models'])) {
             foreach ($data['linkable_models'] as $model) {
@@ -49,11 +43,6 @@ class MenuBuilder extends Tool
     public function renderNavigation()
     {
         return view('nova-menu::navigation');
-    }
-
-    public static function getLocales()
-    {
-        return self::$locales;
     }
 
     public static function getModels()

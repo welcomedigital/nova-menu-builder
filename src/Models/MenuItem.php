@@ -1,9 +1,9 @@
 <?php
 
-namespace WelcomeDigital\MenuBuilder\Models;
+namespace Wdgt\MenuBuilder\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use WelcomeDigital\MenuBuilder\Models\Menu;
+use Wdgt\MenuBuilder\Models\Menu;
 
 class MenuItem extends Model
 {
@@ -43,10 +43,12 @@ class MenuItem extends Model
         return $query->whereNull('parent_id');
     }
 
+
     public function scopeEnabled($query)
     {
         return $query->where('enabled', 1);
     }
+
 
     public function getDisplayValueAttribute()
     {
@@ -56,6 +58,7 @@ class MenuItem extends Model
         return $this->value;
     }
 
+
     public function getTypeAttribute()
     {
         if (class_exists($this->class)) {
@@ -63,6 +66,7 @@ class MenuItem extends Model
         }
         return null;
     }
+
 
     public function getCustomValueAttribute()
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace WelcomeDigital\MenuBuilder\Http\Middleware;
+namespace Wdgt\MenuBuilder\Http\Middleware;
 
-use WelcomeDigital\MenuBuilder\MenuBuilder;
+use Wdgt\MenuBuilder\MenuBuilder;
 
 class Authorize
 {

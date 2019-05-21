@@ -1,16 +1,43 @@
 <?php
 
-namespace WelcomeDigital\MenuBuilder\Models;
+namespace Wdgt\MenuBuilder\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use WelcomeDigital\MenuBuilder\Models\MenuItem;
+use Wdgt\MenuBuilder\Models\MenuItem;
+
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
+use Cviebrock\EloquentSluggable\Sluggable as Sluggable;
+
 
 class Menu extends Model
 {
+    use SoftDeletes;
+    
+    protected $fillable = ['title','slug'];
+
+    use Sluggable;
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => ['name', 'language.code'],
+                'separator' => '_',
+                'onUpdate' => true,
+                'unique' => false,
+            ]
+        ];
+    }
+
+    public static function boot()
+    {
+
+        parent::boot();
+    }
+
     public function rootMenuItems()
     {
-        return $this
-            ->hasMany(MenuItem::class)
+        return $this->hasMany(MenuItem::class)
             ->where('parent_id', null)
             ->orderby('parent_id')
             ->orderby('order')
@@ -23,7 +50,7 @@ class Menu extends Model
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
-            'locale' => $this->locale,
+            'language_id' => $this->language_id,
             'menuItems' => collect($this->rootMenuItems)->map(function ($item) {
                 return $this->formatMenuItem($item);
             }),
@@ -45,4 +72,16 @@ class Menu extends Model
             }),
         ];
     }
+
+    
+    public function language()
+    {
+        return $this->belongsTo(\App\Language::class, 'language_id');
+    }
+
+    public function menuItems()
+    {
+        return $this->hasMany(MenuItem::class);
+    }
+
 }

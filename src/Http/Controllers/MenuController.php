@@ -1,13 +1,13 @@
 <?php
 
-namespace WelcomeDigital\MenuBuilder\Http\Controllers;
+namespace Wdgt\MenuBuilder\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use WelcomeDigital\MenuBuilder\Models\Menu;
-use WelcomeDigital\MenuBuilder\Models\MenuItem;
-use WelcomeDigital\MenuBuilder\Http\Requests\NewMenuItemRequest;
-use WelcomeDigital\MenuBuilder\MenuBuilder;
+use Wdgt\MenuBuilder\Models\Menu;
+use Wdgt\MenuBuilder\Models\MenuItem;
+use Wdgt\MenuBuilder\Http\Requests\NewMenuItemRequest;
+use Wdgt\MenuBuilder\MenuBuilder;
 
 class MenuController extends Controller
 {
@@ -84,7 +84,7 @@ class MenuController extends Controller
     /**
      * Update the given menu item
      *
-     * @param   \WelcomeDigital\MenuBuilder\Models\MenuItem  $item
+     * @param   \Wdgt\MenuBuilder\Models\MenuItem  $item
      * @param   NewMenuItemRequest  $request
      *
      * @return  json

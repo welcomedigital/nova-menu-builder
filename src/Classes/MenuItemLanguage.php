@@ -2,28 +2,36 @@
 
 namespace Wdgt\MenuBuilder\Classes;
 
-abstract class MenuLinkable
-{
+use App\Language as Language;
+
+class MenuItemLanguage extends MenuLinkable
+{   
     /**
      * Get the menu link identifier that can be used to tell different custom
      * links apart (ie 'page' or 'product').
      *
      * @return string
      **/
-    abstract public static function getIdentifier(): string;
+    public static function getIdentifier(): string
+    {
+        return 'language-url';
+    }
 
     /**
-     * Get menu link name shown in CMS when selecting link type.
+     * Get menu link name shown in  a dropdown in CMS when selecting link type
      * ie ('Product Link').
      *
      * @return string
      **/
-    abstract public static function getName(): string;
+    public static function getName(): string
+    {
+        return 'Language URL';
+    }
 
     /**
      * Get menu link type.
      * 
-     * Only 'select' is supported for custom MenuLinkables.
+     * Get it on BilderResourceTool.vue and create your GUI
      *
      * @return string select|static-url
      **/
@@ -32,17 +40,18 @@ abstract class MenuLinkable
         return 'select';
     }
 
+
+
     /**
      * Get list of options shown in a select dropdown.
-     * 
+     *
      * Should be a map of [key => value, ...], where key is a unique identifier
      * and value is the displayed string.
      *
      * @return array
      **/
-    public static function getOptions(): array
-    {
-        return [];
+    public static function getOptions(): array {
+        return Language::all()->pluck('code')->toArray();
     }
 
     /**
@@ -51,14 +60,14 @@ abstract class MenuLinkable
      * @param string $value
      * @return string
      **/
-    public static function getDisplayValue(string $value): string
-    {
+    public static function getDisplayValue(string $value): string {
+        // return 'Language: ' . Language::find($value)->name;
         return $value;
     }
 
     /**
      * Get the value of the link visible to the front-end.
-     * 
+     *
      * Can be anything. It is up to you how you will handle parsing it.
      *
      * @param string $value The key from options list that was selected.
@@ -67,6 +76,8 @@ abstract class MenuLinkable
      **/
     public static function getValue(string $value, array $parameters = null)
     {
+        // return Language::find($value);
         return $value;
     }
+
 }

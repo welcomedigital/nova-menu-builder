@@ -23,7 +23,7 @@ Continuation of [Infinety/Nova-Menu-Builder](https://github.com/InfinetyEs/Nova-
 Install the package in a Laravel Nova project via Composer:
 
 ```bash
-composer require welcomedigital/nova-menu-builder
+composer require Wdgt/nova-menu-builder
 ```
 
 Publish the database migration(s) and run migrate:
@@ -42,7 +42,7 @@ public function tools()
 {
     return [
         // ...
-        new \WelcomeDigital\MenuBuilder\MenuBuilder(),
+        new \Wdgt\MenuBuilder\MenuBuilder(),
     ];
 }
 ```
@@ -53,7 +53,7 @@ public function tools()
 
 Nova menu builder allows you to create a select field for custom models (ie Pages or Products).
 
-First, create a class that extends the `WelcomeDigital\MenuBuilder\Classes\MenuLinkable` class.
+First, create a class that extends the `Wdgt\MenuBuilder\Classes\MenuLinkable` class.
 
 Secondly, register the class in the constructor of `MenuBuilder` in `NovaServiceProvider`'s `tools()` function like so:
 
@@ -64,7 +64,7 @@ public function tools()
 {
     return [
         // ...
-        new \WelcomeDigital\MenuBuilder\MenuBuilder([
+        new \Wdgt\MenuBuilder\MenuBuilder([
             'linkable_models' => [
                 \App\Classes\CustomMenuLinkable::class,
             ],
@@ -173,7 +173,7 @@ public function tools()
 {
     return [
         // ...
-        new \WelcomeDigital\MenuBuilder\MenuBuilder([
+        new \Wdgt\MenuBuilder\MenuBuilder([
             'linkable_models' => null, // Optional
             'locales' => [
                'en_US' => 'English',

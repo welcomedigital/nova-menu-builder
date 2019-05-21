@@ -1,6 +1,6 @@
 <?php
 
-namespace WelcomeDigital\MenuBuilder\Classes;
+namespace Wdgt\MenuBuilder\Classes;
 
 class MenuItemStaticURL extends MenuLinkable
 {

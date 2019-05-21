@@ -1,9 +1,9 @@
 <?php
 
-namespace WelcomeDigital\MenuBuilder\Http\Requests;
+namespace Wdgt\MenuBuilder\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use WelcomeDigital\MenuBuilder\MenuBuilder;
+use Wdgt\MenuBuilder\MenuBuilder;
 
 class NewMenuItemRequest extends FormRequest
 {

@@ -17,10 +17,12 @@ class CreateMenusTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('slug');
-            $table->string('locale');
+            $table->unsignedBigInteger('language_id');
             $table->timestamps();
+            $table->softDeletes();
 
-            $table->unique(['slug', 'locale']);
+            $table->unique(['slug', 'language_id']);
+            $table->foreign('language_id')->references('id')->on('languages');
         });
 
         Schema::create('menu_items', function (Blueprint $table) {

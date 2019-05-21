@@ -1,6 +1,6 @@
 <?php
 
-namespace WelcomeDigital\MenuBuilder;
+namespace Wdgt\MenuBuilder;
 
 use Laravel\Nova\ResourceTool;
 
